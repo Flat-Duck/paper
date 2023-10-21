@@ -3,10 +3,10 @@
 <x-inputs.group class="col-sm-12">
     <x-inputs.text
         name="name"
-        label="Name"
+        label="{{trans('crud.users.inputs.name')}}"
         :value="old('name', ($editing ? $user->name : ''))"
         maxlength="255"
-        placeholder="Name"
+        placeholder="{{trans('crud.users.inputs.name')}}"
         required
     ></x-inputs.text>
 </x-inputs.group>
@@ -14,10 +14,10 @@
 <x-inputs.group class="col-sm-12">
     <x-inputs.email
         name="email"
-        label="Email"
+        label="{{trans('crud.users.inputs.email')}}"
         :value="old('email', ($editing ? $user->email : ''))"
         maxlength="255"
-        placeholder="Email"
+        placeholder="{{trans('crud.users.inputs.email')}}"
         required
     ></x-inputs.email>
 </x-inputs.group>
@@ -25,15 +25,24 @@
 <x-inputs.group class="col-sm-12">
     <x-inputs.password
         name="password"
-        label="Password"
+        label="{{trans('crud.users.inputs.password')}}"
         maxlength="255"
-        placeholder="Password"
+        placeholder="{{trans('crud.users.inputs.password')}}"
         :required="!$editing"
     ></x-inputs.password>
 </x-inputs.group>
 
+<x-inputs.checkbox
+    id="is_teacher"
+    name="is_teacher"
+    label="{{trans('crud.users.inputs.is_teacher')}}"
+    value="false"
+    :checked="isset($user) ? $user->is_teacher : false"
+    :add-hidden-value="false"
+></x-inputs.checkbox>
+
 <div class="form-group col-sm-12 mt-4">
-    <h4>Assign @lang('crud.roles.name')</h4>
+    <h4>تعيين @lang('crud.roles.name')</h4>
 
     @foreach ($roles as $role)
     <div>

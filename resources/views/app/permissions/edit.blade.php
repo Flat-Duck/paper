@@ -1,4 +1,4 @@
-@extends('layouts.app', ['page' => 'permission'])
+@extends('layouts.app', ['page' => 'permissions'])
 
 @section('title',  trans('crud.permissions.edit_title') )
 @section('content')
@@ -13,12 +13,13 @@
             <div class="col-12">
                 <form
                     role="form"
-                    method="PUT"
+                    method="POST"
                     action="{{ route('permissions.update', $permission) }}"
                     enctype="multipart/form-data"
                     class="card"
                 >
                     @csrf
+                    @method('PUT')
                     <div class="card-header">
                         <h4 class="card-title">
                             @lang('crud.permissions.edit_title')

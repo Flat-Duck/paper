@@ -1,4 +1,4 @@
-@extends('layouts.app', ['page' => 'crud.users.index_title'])
+@extends('layouts.app', ['page' => 'users'])
 
 @section('title', trans('crud.users.index_title') )
 @section('content')

@@ -1,7 +1,7 @@
 @php $editing = isset($section) @endphp
 
 <x-inputs.group class="col-sm-12">
-    <x-inputs.select name="department_id" label="Department" required>
+    <x-inputs.select name="department_id" label="{{trans('crud.sections.inputs.department_id')}}" required>
         @php $selected = old('department_id', ($editing ? $section->department_id : '')) @endphp
         <option disabled {{ empty($selected) ? 'selected' : '' }}>Please select the Department</option>
         @foreach($departments as $value => $label)
@@ -13,10 +13,10 @@
 <x-inputs.group class="col-sm-12">
     <x-inputs.text
         name="name"
-        label="Name"
+        label="{{trans('crud.sections.inputs.name')}}"
         :value="old('name', ($editing ? $section->name : ''))"
         maxlength="255"
-        placeholder="Name"
+        placeholder="{{trans('crud.sections.inputs.name')}}"
         required
     ></x-inputs.text>
 </x-inputs.group>

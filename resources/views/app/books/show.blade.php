@@ -1,4 +1,4 @@
-@extends('layouts.app', ['page' => 'book'])
+@extends('layouts.app', ['page' => 'books'])
 
 @section('title',  trans('crud.books.create_title') )
 @section('content')

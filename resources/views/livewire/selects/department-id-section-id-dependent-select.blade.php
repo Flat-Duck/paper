@@ -2,7 +2,7 @@
     <x-inputs.group class="col-sm-12">
         <x-inputs.select
             name="department_id"
-            label="Department"
+            label="{{trans('crud.books.inputs.department_id')}}"
             wire:model="selectedDepartmentId"
         >
             <option selected>Please select the Department</option>
@@ -15,7 +15,7 @@
     <x-inputs.group class="col-sm-12">
         <x-inputs.select
             name="section_id"
-            label="Section"
+            label="{{trans('crud.books.inputs.section_id')}}"
             wire:model="selectedSectionId"
         >
             <option selected>Please select the Section</option>

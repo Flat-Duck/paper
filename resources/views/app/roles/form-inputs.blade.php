@@ -3,13 +3,13 @@
 <x-inputs.group class="col-sm-12">
     <x-inputs.text
         name="name"
-        label="Name"
+        label="{{trans('crud.roles.inputs.name')}}"
         :value="old('name', ($editing ? $role->name : ''))"
     ></x-inputs.text>
 </x-inputs.group>
 
 <div class="form-group col-sm-12 mt-4">
-    <h4>Assign @lang('crud.permissions.name')</h4>
+    <h4>تعيين @lang('crud.permissions.name')</h4>
 
     @foreach ($permissions as $permission)
     <div>

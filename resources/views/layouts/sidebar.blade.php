@@ -15,61 +15,61 @@
                             </a>
                         </li>
                             @can('view-any', App\Models\User::class)
-                                <li class="nav-item ">
+                                  <li class="nav-item  {{ $page == 'users'? 'active':''  }}">
                                     <a class="nav-link" href="{{ route('users.index') }}">
                                         <span class="nav-link-icon d-md-none d-lg-inline-block">
                                             <i class="ti ti-users" ></i>
                                         </span>
                                         <span class="nav-link-title">
-                                            Users
+                                            المستخدمين
                                         </span>
                                     </a>
                                 </li>
                             @endcan
                             @can('view-any', App\Models\Department::class)
-                                <li class="nav-item ">
+                                  <li class="nav-item  {{ $page == 'departments'? 'active':''  }}">
                                     <a class="nav-link" href="{{ route('departments.index') }}">
                                         <span class="nav-link-icon d-md-none d-lg-inline-block">
                                             <i class="ti ti-users" ></i>
                                         </span>
                                         <span class="nav-link-title">
-                                            Departments
+                                            الاقسام
                                         </span>
                                     </a>
                                 </li>
                             @endcan
                             @can('view-any', App\Models\Section::class)
-                                <li class="nav-item ">
+                                  <li class="nav-item  {{ $page == 'sections'? 'active':''  }}">
                                     <a class="nav-link" href="{{ route('sections.index') }}">
                                         <span class="nav-link-icon d-md-none d-lg-inline-block">
                                             <i class="ti ti-users" ></i>
                                         </span>
                                         <span class="nav-link-title">
-                                            Sections
+                                            الشعبات
                                         </span>
                                     </a>
                                 </li>
                             @endcan
                             @can('view-any', App\Models\Paper::class)
-                                <li class="nav-item ">
+                                  <li class="nav-item  {{ $page == 'papers'? 'active':''  }}">
                                     <a class="nav-link" href="{{ route('papers.index') }}">
                                         <span class="nav-link-icon d-md-none d-lg-inline-block">
                                             <i class="ti ti-users" ></i>
                                         </span>
                                         <span class="nav-link-title">
-                                            Papers
+                                            الاوراق العلمية
                                         </span>
                                     </a>
                                 </li>
                             @endcan
                             @can('view-any', App\Models\Book::class)
-                                <li class="nav-item ">
+                                  <li class="nav-item  {{ $page == 'books'? 'active':''  }}">
                                     <a class="nav-link" href="{{ route('books.index') }}">
                                         <span class="nav-link-icon d-md-none d-lg-inline-block">
                                             <i class="ti ti-users" ></i>
                                         </span>
                                         <span class="nav-link-title">
-                                            Books
+                                            الكتب
                                         </span>
                                     </a>
                                 </li>

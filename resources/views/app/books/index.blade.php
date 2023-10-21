@@ -1,4 +1,4 @@
-@extends('layouts.app', ['page' => 'crud.books.index_title'])
+@extends('layouts.app', ['page' => 'books'])
 
 @section('title', trans('crud.books.index_title') )
 @section('content')
@@ -100,7 +100,7 @@
                             <td>{{ $k+1 }}</td>
                             <td>{{ $book->title ?? '-' }}</td>
                             <td>{{ $book->author ?? '-' }}</td>
-                            <td>{{ $book->published_at ?? '-' }}</td>
+                            <td>{{ $book->published_at->format('Y/m/d') ?? '-' }}</td>
                             <td>{{ $book->publisher ?? '-' }}</td>
                             <td>{{ $book->downloads ?? '-' }}</td>
                             <td>

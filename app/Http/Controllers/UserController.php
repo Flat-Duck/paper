@@ -91,6 +91,7 @@ class UserController extends Controller
         UserUpdateRequest $request,
         User $user
     ): RedirectResponse {
+       // dd($request);
         $this->authorize('update', $user);
 
         $validated = $request->validated();
@@ -99,6 +100,12 @@ class UserController extends Controller
             unset($validated['password']);
         } else {
             $validated['password'] = Hash::make($validated['password']);
+        }
+
+        if (empty($validated['is_teacher'])) {
+            $validated['is_teacher'] = false;
+        } else {
+            $validated['is_teacher'] = true;
         }
 
         $user->update($validated);

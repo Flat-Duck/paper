@@ -1,4 +1,4 @@
-@extends('layouts.app', ['page' => 'department'])
+@extends('layouts.app', ['page' => 'departments'])
 
 @section('title',  trans('crud.departments.edit_title') )
 @section('content')
@@ -13,12 +13,13 @@
             <div class="col-12">
                 <form
                     role="form"
-                    method="PUT"
+                    method="POST"
                     action="{{ route('departments.update', $department) }}"
                     enctype="multipart/form-data"
                     class="card"
                 >
                     @csrf
+                    @method('PUT')
                     <div class="card-header">
                         <h4 class="card-title">
                             @lang('crud.departments.edit_title')

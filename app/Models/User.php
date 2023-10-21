@@ -16,7 +16,7 @@ class User extends Authenticatable
     use HasFactory;
     use Searchable;
 
-    protected $fillable = ['name', 'email', 'password'];
+    protected $fillable = ['name', 'email', 'password', 'is_teacher'];
 
     protected $searchableFields = ['*'];
 
@@ -24,6 +24,7 @@ class User extends Authenticatable
 
     protected $casts = [
         'email_verified_at' => 'datetime',
+        'is_teacher' => 'boolean',
     ];
 
     public function isSuperAdmin(): bool

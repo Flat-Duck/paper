@@ -1,4 +1,4 @@
-@extends('layouts.app', ['page' => 'crud.papers.index_title'])
+@extends('layouts.app', ['page' => 'papers'])
 
 @section('title', trans('crud.papers.index_title') )
 @section('content')
@@ -99,7 +99,7 @@
                             <td>{{ $k+1 }}</td>
                             <td>{{ $paper->title ?? '-' }}</td>
                             <td>{{ $paper->author ?? '-' }}</td>
-                            <td>{{ $paper->published_at ?? '-' }}</td>
+                            <td>{{ $paper->published_at->format('Y/m/d') ?? '-' }}</td>
                             <td>{{ $paper->downloads ?? '-' }}</td>
                             <td>
                                 {{ optional($paper->section)->name ?? '-' }}

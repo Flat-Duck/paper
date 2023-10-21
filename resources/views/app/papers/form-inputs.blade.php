@@ -3,10 +3,10 @@
 <x-inputs.group class="col-sm-12">
     <x-inputs.text
         name="title"
-        label="Title"
+        label="{{trans('crud.papers.inputs.title')}}"
         :value="old('title', ($editing ? $paper->title : ''))"
         maxlength="255"
-        placeholder="Title"
+        placeholder="{{trans('crud.papers.inputs.title')}}"
         required
     ></x-inputs.text>
 </x-inputs.group>
@@ -14,10 +14,10 @@
 <x-inputs.group class="col-sm-12">
     <x-inputs.text
         name="author"
-        label="Author"
+        label="{{trans('crud.papers.inputs.author')}}"
         :value="old('author', ($editing ? $paper->author : ''))"
         maxlength="255"
-        placeholder="Author"
+        placeholder="{{trans('crud.papers.inputs.author')}}"
         required
     ></x-inputs.text>
 </x-inputs.group>
@@ -25,7 +25,7 @@
 <x-inputs.group class="col-sm-12">
     <x-inputs.date
         name="published_at"
-        label="Published At"
+        label="{{trans('crud.papers.inputs.published_at')}}"
         value="{{ old('published_at', ($editing ? optional($paper->published_at)->format('Y-m-d') : '')) }}"
         max="255"
         required
@@ -35,16 +35,16 @@
 <x-inputs.group class="col-sm-12">
     <x-inputs.number
         name="downloads"
-        label="Downloads"
+        label="{{trans('crud.papers.inputs.downloads')}}"
         :value="old('downloads', ($editing ? $paper->downloads : ''))"
         max="255"
-        placeholder="Downloads"
+        placeholder="{{trans('crud.papers.inputs.downloads')}}"
         required
     ></x-inputs.number>
 </x-inputs.group>
 
 <x-inputs.group class="col-sm-12">
-    <x-inputs.select name="section_id" label="Section" required>
+    <x-inputs.select name="section_id" label="{{trans('crud.papers.inputs.section_id')}}" required>
         @php $selected = old('section_id', ($editing ? $paper->section_id : '')) @endphp
         <option disabled {{ empty($selected) ? 'selected' : '' }}>Please select the Section</option>
         @foreach($sections as $value => $label)
@@ -54,7 +54,7 @@
 </x-inputs.group>
 
 <x-inputs.group class="col-sm-12">
-    <x-inputs.select name="department_id" label="Department" required>
+    <x-inputs.select name="department_id" label="{{trans('crud.papers.inputs.department_id')}}" required>
         @php $selected = old('department_id', ($editing ? $paper->department_id : '')) @endphp
         <option disabled {{ empty($selected) ? 'selected' : '' }}>Please select the Department</option>
         @foreach($departments as $value => $label)
