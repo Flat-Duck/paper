@@ -44,15 +44,25 @@
 </x-inputs.group>
 
 <x-inputs.group class="col-sm-12">
-    <x-inputs.number
-        name="downloads"
-        label="{{trans('crud.books.inputs.downloads')}}"
-        :value="old('downloads', ($editing ? $book->downloads : ''))"
-        max="255"
-        placeholder="{{trans('crud.books.inputs.downloads')}}"
-        required
-    ></x-inputs.number>
+    <x-inputs.partials.label
+        name="file"
+        label="File"
+    ></x-inputs.partials.label
+    ><br />
+
+    <input type="file" name="file" id="file" class="form-control-file" />
+
+    @if($editing && $book->file)
+    <div class="mt-2">
+        <a href="{{ \Storage::url($book->file) }}" target="_blank"
+            ><i class="icon ion-md-download"></i>&nbsp;Download</a
+        >
+    </div>
+    @endif @error('file') @include('components.inputs.partials.error')
+    @enderror
 </x-inputs.group>
+
+
 
 @livewire('selects.department-id-section-id-dependent-select', ['book' =>
 $editing ? $book->id : null])

@@ -15,6 +15,7 @@ class Paper extends Model
         'title',
         'author',
         'published_at',
+        'file',
         'downloads',
         'section_id',
         'department_id',
@@ -34,5 +35,10 @@ class Paper extends Model
     public function department()
     {
         return $this->belongsTo(Department::class);
+    }
+
+    public function comments()
+    {
+        return $this->hasMany(Comment::class);
     }
 }

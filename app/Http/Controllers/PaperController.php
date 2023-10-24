@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 use Illuminate\Http\RedirectResponse;
 use App\Http\Requests\PaperStoreRequest;
 use App\Http\Requests\PaperUpdateRequest;
+use Illuminate\Support\Facades\Storage;
 
 class PaperController extends Controller
 {
@@ -51,6 +52,12 @@ class PaperController extends Controller
         $this->authorize('create', Paper::class);
 
         $validated = $request->validated();
+        if ($request->hasFile('file')) {
+            $path = $request->file->storeAs('public/papers/'.now()->format('Y-m-d-h-s-i'),
+                $request->file('file')->getClientOriginalName());
+            
+            $validated['file'] = $path;
+        }
 
         $paper = Paper::create($validated);
 
@@ -88,14 +95,17 @@ class PaperController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(
-        PaperUpdateRequest $request,
-        Paper $paper
-    ): RedirectResponse {
+    public function update( PaperUpdateRequest $request, Paper $paper ): RedirectResponse {
         $this->authorize('update', $paper);
 
         $validated = $request->validated();
-
+        if ($request->hasFile('file')) {
+            Storage::delete($paper->file);
+            $path = $request->file->storeAs('public/papers/'.now()->format('Y-m-d-h-s-i'),
+                $request->file('file')->getClientOriginalName());
+            
+            $validated['file'] = $path;
+        }
         $paper->update($validated);
 
         return redirect()
@@ -110,10 +120,25 @@ class PaperController extends Controller
     {
         $this->authorize('delete', $paper);
 
+        if ($paper->file) {
+            Storage::delete($paper->file);
+        }
         $paper->delete();
 
         return redirect()
             ->route('papers.index')
             ->withSuccess(__('crud.common.removed'));
+    }
+
+        /**
+     * Remove the specified resource from storage.
+     */
+    public function download(Request $request, Paper $paper): RedirectResponse
+    {
+        if ($paper->file) {
+            $paper->downloads += 1;
+            $paper->save(); 
+            return redirect(Storage::url($paper->file));
+        }
     }
 }

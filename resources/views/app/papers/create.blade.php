@@ -16,6 +16,7 @@
                     method="POST"
                     action="{{ route('papers.store') }}"
                     class="card"
+                    enctype="multipart/form-data"
                 >
                     @csrf
                     <div class="card-header">

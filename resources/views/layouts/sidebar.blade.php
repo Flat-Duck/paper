@@ -73,7 +73,25 @@
                                         </span>
                                     </a>
                                 </li>
-                            @endcan                    
+                            @endcan
+
+                           
+                            <li class="nav-item  {{ $page == 'chat'? 'active':''  }}">
+                              <a class="nav-link" 
+                              @if(auth()->id() == 1)
+                                href="{{ route('admin.chat.index') }}"
+                                @else
+                                href="{{ route('user.chat.index') }}"
+                                @endif
+                                >
+                                  <span class="nav-link-icon d-md-none d-lg-inline-block">
+                                      <i class="ti ti-users" ></i>
+                                  </span>
+                                  <span class="nav-link-title">
+                                      محادثة
+                                  </span>
+                              </a>
+                          </li>
                     @endauth
                 </ul>
             </div>

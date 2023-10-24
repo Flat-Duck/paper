@@ -15,6 +15,7 @@
                     role="form"
                     method="POST"
                     action="{{ route('books.store') }}"
+                    enctype="multipart/form-data"
                     class="card"
                 >
                     @csrf

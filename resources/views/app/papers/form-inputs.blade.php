@@ -33,14 +33,22 @@
 </x-inputs.group>
 
 <x-inputs.group class="col-sm-12">
-    <x-inputs.number
-        name="downloads"
-        label="{{trans('crud.papers.inputs.downloads')}}"
-        :value="old('downloads', ($editing ? $paper->downloads : ''))"
-        max="255"
-        placeholder="{{trans('crud.papers.inputs.downloads')}}"
-        required
-    ></x-inputs.number>
+    <x-inputs.partials.label
+        name="file"
+        label="File"
+    ></x-inputs.partials.label
+    ><br />
+
+    <input type="file" name="file" id="file" class="form-control-file" />
+
+    @if($editing && $paper->file)
+    <div class="mt-2">
+        <a href="{{ \Storage::url($paper->file) }}" target="_blank"
+            ><i class="icon ion-md-download"></i>&nbsp;Download</a
+        >
+    </div>
+    @endif @error('file') @include('components.inputs.partials.error')
+    @enderror
 </x-inputs.group>
 
 <x-inputs.group class="col-sm-12">
@@ -61,4 +69,5 @@
         <option value="{{ $value }}" {{ $selected == $value ? 'selected' : '' }} >{{ $label }}</option>
         @endforeach
     </x-inputs.select>
+
 </x-inputs.group>

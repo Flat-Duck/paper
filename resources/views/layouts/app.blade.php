@@ -51,7 +51,7 @@
             
             @livewireScripts
             
-            @stack('scripts')
+            @yield('scripts')
             
             <script src="https://cdn.jsdelivr.net/npm/notyf@3/notyf.min.js"></script>
             

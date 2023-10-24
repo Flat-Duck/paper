@@ -16,6 +16,7 @@ class Book extends Model
         'author',
         'published_at',
         'publisher',
+        'file',
         'downloads',
         'section_id',
         'department_id',
@@ -31,9 +32,14 @@ class Book extends Model
     {
         return $this->belongsTo(Section::class);
     }
-
+    
     public function department()
     {
         return $this->belongsTo(Department::class);
+    }
+
+    public function comments()
+    {
+        return $this->hasMany(Comment::class);
     }
 }

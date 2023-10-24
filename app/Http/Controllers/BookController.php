@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 use Illuminate\Http\RedirectResponse;
 use App\Http\Requests\BookStoreRequest;
 use App\Http\Requests\BookUpdateRequest;
+use Illuminate\Support\Facades\Storage;
 
 class BookController extends Controller
 {
@@ -52,7 +53,13 @@ class BookController extends Controller
         $this->authorize('create', Book::class);
 
         $validated = $request->validated();
-        //dd($validated);
+        if ($request->hasFile('file')) {
+            $path = $request->file->storeAs('public/books/'.now()->format('Y-m-d-h-s-i'),
+                $request->file('file')->getClientOriginalName());
+            
+            $validated['file'] = $path;
+        }
+
         $book = Book::create($validated);
 
         return redirect()
@@ -94,8 +101,16 @@ class BookController extends Controller
         Book $book
     ): RedirectResponse {
         $this->authorize('update', $book);
-
+        
         $validated = $request->validated();
+        
+        if ($request->hasFile('file')) {
+            Storage::delete($book->file);
+            $path = $request->file->storeAs('public/books/'.now()->format('Y-m-d-h-s-i'),
+                $request->file('file')->getClientOriginalName());
+            
+            $validated['file'] = $path;
+        }
 
         $book->update($validated);
 
@@ -111,10 +126,24 @@ class BookController extends Controller
     {
         $this->authorize('delete', $book);
 
+        if ($book->file) {
+            Storage::delete($book->file);
+        }
         $book->delete();
 
         return redirect()
             ->route('books.index')
             ->withSuccess(__('crud.common.removed'));
+    }
+        /**
+     * Remove the specified resource from storage.
+     */
+    public function download(Request $request, Book $book): RedirectResponse
+    {
+        if ($book->file) {
+            $book->downloads += 1;
+            $book->save(); 
+            return redirect(Storage::url($book->file));
+        }
     }
 }

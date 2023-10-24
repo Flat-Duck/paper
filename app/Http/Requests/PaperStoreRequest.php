@@ -23,7 +23,7 @@ class PaperStoreRequest extends FormRequest
             'title' => ['required', 'max:255', 'string'],
             'author' => ['required', 'max:255', 'string'],
             'published_at' => ['required', 'date'],
-            'downloads' => ['required', 'numeric'],
+            'file' => ['nullable', 'file'],
             'section_id' => ['required', 'exists:sections,id'],
             'department_id' => ['required', 'exists:departments,id'],
         ];

@@ -24,7 +24,7 @@ class BookStoreRequest extends FormRequest
             'author' => ['required', 'max:255', 'string'],
             'published_at' => ['required', 'date'],
             'publisher' => ['required', 'max:255', 'string'],
-            'downloads' => ['required', 'numeric'],
+            'file' => ['nullable', 'file'],
             'department_id' => ['required', 'exists:departments,id'],
             'section_id' => ['required', 'exists:sections,id'],
         ];

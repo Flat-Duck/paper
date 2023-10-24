@@ -8,7 +8,11 @@ use App\Http\Controllers\RoleController;
 use App\Http\Controllers\PaperController;
 use App\Http\Controllers\SectionController;
 use App\Http\Controllers\DepartmentController;
+use App\Http\Controllers\ChatController;
+use App\Http\Controllers\CommentController;
 use App\Http\Controllers\PermissionController;
+use App\Models\Chat;
+use App\Models\User;
 
 /*
 |--------------------------------------------------------------------------
@@ -41,3 +45,16 @@ Route::prefix('/')
         Route::resource('papers', PaperController::class);
         Route::resource('books', BookController::class);
     });
+
+    Route::post('comments/{book}',  [CommentController::class,'store'])->name('comments.store');
+    
+    Route::get('download/books/{book}', [BookController::class,'download'])->name('book.download');
+    Route::get('download/papers/{paper}', [PaperController::class,'download'])->name('paper.download');
+    
+
+    Route::get('chats/admin', [ChatController::class,'index'])->name('admin.chat.index');
+    Route::get('chats/admin/{user}',  [ChatController::class,'show'])->name('admin.chat.show');
+    Route::post('chats/admin/{user}',  [ChatController::class,'send'])->name('admin.chat.send');
+
+    Route::get('chats', [ChatController::class,'user_index'])->name('user.chat.index');
+    Route::post('chats',  [ChatController::class,'user_send'])->name('user.chat.send');
