@@ -16,7 +16,7 @@ return new class extends Migration {
             $table->string('author');
             $table->date('published_at');
             $table->string('file')->nullable();
-            $table->integer('downloads');
+            $table->integer('downloads')->default(0);
             $table->unsignedBigInteger('section_id');
             $table->unsignedBigInteger('department_id');
 

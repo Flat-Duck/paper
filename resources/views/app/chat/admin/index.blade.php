@@ -18,7 +18,7 @@
                     <div class="card-body p-0 scrollable" style="max-height: 35rem">
                         <div class="nav flex-column nav-pills" role="tablist">
                             @forelse($conversations as $conversation)
-                                @if(isset($user) && (auth()->id() != $conversation->sender->id))
+                                @if((auth()->id() != $conversation->sender->id))
                                     <a href="{{route('admin.chat.show',['user'=>$conversation->sender->id])}}" class="nav-link text-start mw-100 p-3 
                                     {{!isset($user)? '': ($user->id == $conversation->sender->id ? 'active':'')}} " id="chat-1-tab" >
                                         <div class="row align-items-center flex-fill">
