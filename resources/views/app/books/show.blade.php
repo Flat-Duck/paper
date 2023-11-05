@@ -94,6 +94,8 @@
                     </div>
                     <div class="card">
                         <div class="card-header">
+                            @auth
+                                
                             <form action="{{ route('comments.store',['book'=>$book->id]) }}" method="post" class="col-12">
                                 @csrf
                                 <p class="font-weight-bold ">Review</p>
@@ -120,7 +122,7 @@
                                     </span>
                                 </div>
                             </form>
-
+                            @endauth
                         </div>
                         <div class="card-body">
                             @forelse ($book->comments as $comment)

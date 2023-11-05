@@ -29,4 +29,9 @@ class Department extends Model
     {
         return $this->hasMany(Paper::class);
     }
+    
+    // public function papers()
+    // {
+    //     return $this->hasMany(Paper::class);
+    // }
 }
