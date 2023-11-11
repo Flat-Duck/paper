@@ -63,7 +63,7 @@
                             <div class="mb-3">
                                 <h5>@lang('crud.papers.inputs.file')</h5>
                                 <span> <div class="mt-2">
-                                        <a href="{{ route('paper.download', ['paper' => $paper->file]) }}" target="_blank"
+                                        <a href="{{ route('paper.download', ['paper' => $paper]) }}" target="_blank"
                                             ><i class="icon ion-md-download"></i>&nbsp;تحميل</a
                                         >
                                     </div></span

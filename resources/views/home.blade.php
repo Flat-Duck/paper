@@ -9,6 +9,7 @@
 </div>
 <div class="page-body">
     <div class="container-xl">
+        @can('view-any', App\Models\Role::class)
         <div class="row row-cards">
             <div class="col-12">
                 <div class="row row-cards">
@@ -99,6 +100,7 @@
                 </div>
             </div>
         </div>
+        @endcan
     </div>
 </div>
 @endsection

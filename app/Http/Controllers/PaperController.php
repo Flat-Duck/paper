@@ -135,12 +135,18 @@ class PaperController extends Controller
         /**
      * Remove the specified resource from storage.
      */
-    public function download(Request $request, Paper $paper): RedirectResponse
+    public function download(Request $request, Paper $paper)
     {
-        if ($paper->file) {
-            $paper->downloads += 1;
-            $paper->save(); 
-            return redirect(Storage::url($paper->file));
-        }
+        if (!is_null($paper->file)) {
+            if ($paper->file) {
+                $paper->downloads += 1;
+                $paper->save(); 
+                return redirect(Storage::url($paper->file));
+            }
+            }else{
+                return redirect()
+                ->route('papers.index')
+                ->withSuccess(__('لايوجد ملف للورقة العلمية!'));
+            }
     }
 }

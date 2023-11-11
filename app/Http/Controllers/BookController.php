@@ -142,12 +142,18 @@ class BookController extends Controller
         /**
      * Remove the specified resource from storage.
      */
-    public function download(Request $request, Book $book): RedirectResponse
+    public function download(Request $request, Book $book)
     {
+        if (!is_null($book->file)) {
         if ($book->file) {
             $book->downloads += 1;
             $book->save(); 
             return redirect(Storage::url($book->file));
+        }
+        }else{
+            return redirect()
+            ->route('books.index')
+            ->withSuccess(__('لايوجد ملف للكتاب!'));
         }
     }
 }
