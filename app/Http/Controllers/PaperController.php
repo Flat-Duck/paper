@@ -100,7 +100,7 @@ class PaperController extends Controller
 
         $validated = $request->validated();
         if ($request->hasFile('file')) {
-                      if (Storage::exists($paper->file)){
+                      if (!is_null($paper->file)){
                     Storage::delete($paper->file);            } 
             $path = $request->file->storeAs('public/papers/'.now()->format('Y-m-d-h-s-i'),
                 $request->file('file')->getClientOriginalName());
@@ -122,7 +122,7 @@ class PaperController extends Controller
         $this->authorize('delete', $paper);
 
         if ($paper->file) {
-                      if (Storage::exists($paper->file)){
+                      if (!is_null($paper->file)){
                     Storage::delete($paper->file);            } 
         }
         $paper->delete();

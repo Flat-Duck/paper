@@ -105,7 +105,7 @@ class BookController extends Controller
         $validated = $request->validated();
         
         if ($request->hasFile('file')) {
-                      if (Storage::exists($book->file)){
+                      if (!is_null($book->file)){
                     Storage::delete($book->file);
             } 
             $path = $request->file->storeAs('public/books/'.now()->format('Y-m-d-h-s-i'),
@@ -129,7 +129,7 @@ class BookController extends Controller
         $this->authorize('delete', $book);
 
         if ($book->file) {
-            if (Storage::exists($book->file)){
+            if (!is_null($book->file)){
                 Storage::delete($book->file);
             } 
         }
