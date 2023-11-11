@@ -6,7 +6,8 @@
             </button>
             <h1 class="navbar-brand navbar-brand-autodark d-none-navbar-horizontal pe-0 pe-md-3">
                 <a href=".">
-                    <img src="{{ url('img/logo.png') }}" alt="{{ config('app.name') }}" >
+                    <img width="40px" height="40px" title="Noor Book" alt="Noor Book" class="icon-logo"
+                    src="{{ url('img/logo.png') }}" alt="{{ config('app.name') }}">
                     {{-- <img src="{{ url('img/logo.svg') }}" width="110" height="32" alt="Tabler" class="navbar-brand-image"> --}}
                 </a>
             </h1>
