@@ -1,10 +1,10 @@
-@extends('admin.layouts.guest')
+@extends('layouts.app')
 
 @section('title', 'Reset Password')
 
 @section('content')
 
-<form method="post" action="{{ route('admin.reset_password') }}" class="card card-md">
+<form method="post" action="{{ route('reset_password') }}" class="card card-md">
     @csrf
     <div class="card-body">
         <h2 class="card-title text-center mb-4">نسيت كلمة المرور</h2>

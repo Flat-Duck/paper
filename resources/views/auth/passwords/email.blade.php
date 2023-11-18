@@ -1,4 +1,4 @@
-@extends('admin.layouts.guest')
+@extends('layouts.app')
 
 @section('title', 'Forgot Password')
 
@@ -26,7 +26,7 @@
     </div>
 </form>
 <div class="text-center text-muted mt-3">
-    لقد تذكرت ,  <a href="{{ route('admin.login') }}">
+    لقد تذكرت ,  <a href="{{ route('login') }}">
         رجعني
     </a> لصفحة تسجيل الدخول
   </div>

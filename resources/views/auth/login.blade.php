@@ -1,5 +1,5 @@
 
-@extends('admin.layouts.guest')
+@extends('layouts.app')
 
 @section('title', 'Login')
 
@@ -40,7 +40,7 @@
 
             @if (Route::has('admin.forgot_password'))
             <span class="form-label-description">
-                <a  href="{{ route('admin.forgot_password') }}" tabindex="5">{{ __('نسيت كلمة المرور؟؟') }}</a>
+                <a  href="{{ route('forgot_password') }}" tabindex="5">{{ __('نسيت كلمة المرور؟؟') }}</a>
             </span>
             @endif
 
