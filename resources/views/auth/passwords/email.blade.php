@@ -4,7 +4,9 @@
 
 @section('content')
 
-
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
 <form class="card card-md" method="post">
     @csrf
     <div class="card-body">
@@ -30,5 +32,7 @@
         رجعني
     </a> لصفحة تسجيل الدخول
   </div>
-
+</div>
+</div>
+</div>
 @endsection

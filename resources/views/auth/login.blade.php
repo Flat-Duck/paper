@@ -5,7 +5,9 @@
 
 @section('content')
 
-    
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
 <form class="card card-md" method="post" autocomplete="off">
         @csrf
 
@@ -54,6 +56,16 @@
     <div class="text-center text-muted mt-3">
         {{ __("ليس لديك حساب ?") }} <a href="{{ route('register') }}" tabindex="-1">{{ __('سجل الان') }}</a>
     </div>
+    @endif
+    @if (Route::has('password.request'))
+        <div class="text-center text-muted mt-3">
+            <a class="btn btn-link" href="{{ route('password.request') }}">
+                {{ __('نسيت كلمة المرور?') }}
+            </a>
+        </div>
+        </div>
+    </div>
+</div>
     @endif
 
 @endsection
