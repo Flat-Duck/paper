@@ -3,7 +3,7 @@
 @section('title', 'Reset Password')
 
 @section('content')
-<x-flash-message />
+
 <form method="post" action="{{ route('admin.reset_password') }}" class="card card-md">
     @csrf
     <div class="card-body">

@@ -5,7 +5,7 @@
 
 @section('content')
 
-    <x-flash-message />
+    
 <form class="card card-md" method="post" autocomplete="off">
         @csrf
 

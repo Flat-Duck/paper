@@ -4,7 +4,7 @@
 
 @section('content')
 
-<x-flash-message />
+
 <form class="card card-md" method="post">
     @csrf
     <div class="card-body">
