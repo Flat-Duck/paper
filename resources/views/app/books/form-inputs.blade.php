@@ -50,7 +50,7 @@
     ></x-inputs.partials.label
     ><br />
 
-    <input type="file" name="file" id="file" class="form-control-file" />
+    <input type="file" name="file" id="file" class="form-control-file" accept="application/pdf"/>
 
     @if($editing && $book->file)
     <div class="mt-2">
